@@ -3,12 +3,12 @@ import 'antd/dist/antd.css';
 import '../css/index.css';
 import { Layout, Menu} from 'antd';
 import {
-  DesktopOutlined,
-  PieChartOutlined,
-  FileOutlined,
-  TeamOutlined,
   UserOutlined,
+  LogoutOutlined,
+  AppstoreOutlined,
+  InfoCircleOutlined
 } from '@ant-design/icons';
+import {Link} from 'react-router-dom';
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -29,12 +29,7 @@ class SiderMenu extends React.Component {
         <div className="logo" />
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
           <Menu.Item key="1">
-            <PieChartOutlined />
-            <span>Product</span>
-          </Menu.Item>
-          <Menu.Item key="2">
-            <DesktopOutlined />
-            <span>Add Product</span>
+            <Link to='/VendorInventory'><AppstoreOutlined /><span>Inventory</span></Link>
           </Menu.Item>
           <SubMenu
             key="sub1"
@@ -45,8 +40,8 @@ class SiderMenu extends React.Component {
               </span>
             }
           >
-            <Menu.Item key="3">Account Info</Menu.Item>
-            <Menu.Item key="4">Logout</Menu.Item>
+            <Menu.Item key="2"><Link to='/VendorInfo'></Link><InfoCircleOutlined /><span>Account Info</span></Menu.Item>
+            <Menu.Item key="3"><Link to='/'><LogoutOutlined /><span>Logout</span></Link></Menu.Item>
           </SubMenu>
         </Menu>
       </Sider>

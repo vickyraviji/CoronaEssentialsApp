@@ -16,7 +16,7 @@ class HeaderMenu extends React.Component {
 
 export default HeaderMenu;
 
-// Use inside this layout 
+//Use inside this layout 
 // <Layout style={{ minHeight: '100vh' }}>
-//<Layout className="site-layout"></Layout>
+// <Layout className="site-layout"></Layout>
 // </Layout>

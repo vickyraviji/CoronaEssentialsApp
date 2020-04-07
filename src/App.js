@@ -1,25 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
 import './css/App.css';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import AdminInventory from './pages/admin/AdminInventory';
+import VendorInventory from './pages/vendor/VendorInventory';
+import VendorInfo from './pages/vendor/VendorInfo';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Route path='/VendorInfo' exact={true}>
+        <VendorInfo />
+      </Route>
+      <Route path='/VendorInventory' exact={true}>
+        <VendorInventory />
+      </Route>
+      <Route path='/AdminInventory' exact={true}>
+        <AdminInventory />
+      </Route>
+      <Route path='/Register' exact={true}>
+        <Register />
+      </Route>
+      <Route path='/' exact={true}>
+        <Login />
+      </Route>
+    </Router>
   );
 }
 
