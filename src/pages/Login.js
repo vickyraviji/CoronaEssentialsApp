@@ -4,7 +4,7 @@ import '../css/Login.css';
 import {Card} from 'antd';
 import {Row, Col} from 'antd';
 import { Form, Input, Button, Checkbox } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { MailOutlined, LockOutlined } from '@ant-design/icons';
 import { Link, useHistory } from "react-router-dom";
 
 
@@ -26,17 +26,21 @@ const LoginForm = () => {
         }}
         onFinish={onFinish}
       >
-        <Form.Item
-          name="username"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your Username!',
-            },
-          ]}
-        >
-          <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
-        </Form.Item>
+      <Form.Item
+        name="email"
+        rules={[
+          {
+            type: 'email',
+            message: 'The input is not valid E-mail!',
+          },
+          {
+            required: true,
+            message: 'Please input your E-mail!',
+          },
+        ]}
+      >
+      <Input prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email" />
+      </Form.Item>
         <Form.Item
           name="password"
           rules={[

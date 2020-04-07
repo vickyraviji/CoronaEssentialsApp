@@ -11,8 +11,8 @@ import {
   Checkbox,
   Button,
   AutoComplete,
+  InputNumber
 } from 'antd';
-import { QuestionCircleOutlined } from '@ant-design/icons';
 import {Card} from 'antd';
 import '../css/Register.css';
 import { Layout} from 'antd';
@@ -68,15 +68,8 @@ const RegistrationForm = () => {
   };
 
   const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <Select
-        style={{
-          width: 70,
-        }}
-      >
-        <Option value="86">+86</Option>
-        <Option value="87">+87</Option>
-      </Select>
+    <Form.Item label="InputNumber">
+          <InputNumber />
     </Form.Item>
   );
   const [autoCompleteResult, setAutoCompleteResult] = useState([]);
@@ -99,12 +92,51 @@ const RegistrationForm = () => {
       form={form}
       name="register"
       onFinish={onFinish}
-      initialValues={{
-        residence: ['zhejiang', 'hangzhou', 'xihu'],
-        prefix: '86',
-      }}
       scrollToFirstError
     >
+      <Form.Item
+        name="firstname"
+        label="Title"
+        hasFeedback
+        rules={[
+          {
+            required: true,
+            message: 'Please select title!',
+          },
+        ]}
+      >
+        <Select placeholder="Title" style={{width: 80}}>
+          <Option value="Mr">Mr</Option>
+          <Option value="Mrs">Mrs</Option>
+          <Option value="Ms">Ms</Option>
+        </Select>
+      </Form.Item>
+      <Form.Item
+        name="firstname"
+        label="First Name"
+        rules={[
+          {
+            required: true,
+            message: 'Please enter FirstName!',
+          },
+        ]}
+      >
+      <Input style={{ width: 160 }} placeholder="First Name" />
+      </Form.Item>
+      <Form.Item
+        name="firstname"
+        label="Last Name"
+        hasFeedback
+        rules={[
+          {
+            required: true,
+            message: 'Please enter lastname!',
+          },
+        ]}
+      >
+      <Input style={{ width: 160 }} placeholder="Last Name" />
+      </Form.Item>
+
       <Form.Item
         name="email"
         label="E-mail"
@@ -160,6 +192,15 @@ const RegistrationForm = () => {
         <Input.Password />
       </Form.Item>
 
+      <Form.Item label="Country Code" rules={[
+        {
+          required: true, 
+          message: 'Please Provide Country Code!'
+        }]
+      }>
+          <InputNumber />
+      </Form.Item>
+
       <Form.Item
         name="phone"
         label="Phone Number"
@@ -171,7 +212,6 @@ const RegistrationForm = () => {
         ]}
       >
         <Input
-          addonBefore={prefixSelector}
           style={{
             width: '100%',
           }}
@@ -183,7 +223,7 @@ const RegistrationForm = () => {
         label="Website"
         rules={[
           {
-            required: true,
+            required: false,
             message: 'Please input website!',
           },
         ]}
@@ -192,7 +232,7 @@ const RegistrationForm = () => {
           <Input />
         </AutoComplete>
       </Form.Item>
-
+        
       <Form.Item label="Captcha" extra="We must make sure that your are a human.">
         <Row gutter={8}>
           <Col span={12}>
@@ -318,7 +358,7 @@ class Register extends React.Component {
                     
                     <div className="site-card-border-less-wrapper" className="bg">
                         <Row  className="row-form">
-                            <Card title="Registration" bordered={true} style={{ width: 450, height:720,}}>
+                            <Card title="Registration" bordered={true} style={{ width: 450, height:770,}}>
                                 <RegistrationForm />
                             </Card>
                         </Row>
