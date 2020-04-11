@@ -17,6 +17,7 @@ const CardComp = props =>{
         lat,
         lon,
         Name,
+        city,
     } = props;
 
    
@@ -66,6 +67,7 @@ const CardComp = props =>{
         <div className = "row-form">
         <div className = "container-fluid.row" >
         <Card
+        
         hoverable
         className = "vendorDisplayCard"
         //cover={<img alt="example" src={props.imgsrc} className="card-img-top"/>}
@@ -79,7 +81,7 @@ const CardComp = props =>{
     <Card type="inner" title="Description" extra={<Button onClick ={ ()=>{whichPage(Name)}}>Explore</Button>} >
       <Row><p>Product Name : Mask A</p></Row>
       <Row><p>Status : <span className = "font-format"><font color ="green">Instock</font></span></p></Row>
-      <Row><p>Distance : {distance} km</p></Row>
+      <Row><p>Place : {city} </p></Row>
     </Card>
    
       </Card>

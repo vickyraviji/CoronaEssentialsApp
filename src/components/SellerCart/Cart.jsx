@@ -14,43 +14,41 @@ const viewProducts = props=>{
    
     return (
       
-    <div>
+    <div >
     
-    <Row style = {{paddingTop : 20,paddingLeft : 40}}>
+    <Row style = {{paddingTop : 40,paddingLeft : 40}}>
+    
     <Col span={8}>
                     <font className = "font-product">{Parentname}</font> 
             </Col>  
             <Col span ={8}></Col>
-            <Col span={8}></Col>
+            <Col span ={8}></Col>
+           
     </Row>
     
     {
       products.map((product)=>{
-        return (<Row style={{paddingTop : 20}}>
+        return (
+        <Row style={{paddingTop : 15}}>
         <Col span={1}>
     
              </Col>
-             <Col span={4}>
+             <Col span={6}>
              
-       {product.subtype} : 
+       {product.subtype} 
            
          
-             </Col>
-             <Col span={2}>
-             
-      10
-           
-         
-             </Col>
-             <Col span={18}>
-             </Col>
-         </Row>)
+             </Col><Col span = {2}>:</Col> <Col span = {2}>10</Col>
+          <Col span={18}></Col>
+            
+         </Row>
+         )
     
 
       })
     }
    
-
+   
      </div>
   );
 

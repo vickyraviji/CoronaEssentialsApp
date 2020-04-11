@@ -88,28 +88,57 @@ const layout = {
       
      final_items = Object.keys(values)
     console.log(Object.entries(values["Masks"]))
-   final_items.map((product,index)=>{
+  let isNewProductPresent = false;
+   final_items.forEach((product,index)=>{
      DB_final[index] = {}
      DB_final[index].title = product
+     console.log("The db final object",DB_final);
     DB_final[index]["products"] = [];
-   
+    
     if(product!=="NewProducts")
     {
      console.log("Main Product :"+product)
      Object.keys(values[product]).map((subproduct,index1)=>{
-       DB_final[index].products[index1]["subtype"] = undefined;
-       DB_final[index].products[index1]["count"] = undefined
-           DB_final[index].products[index1].subtype = subproduct
+      DB_final[index].products[index1] = {}
+          DB_final[index].products[index1].subtype = subproduct
            console.log("Sub product ["+index1+"]"+subproduct)
            console.log("Count : "+values[product][subproduct].count)
            DB_final[index].products[index1].count = values[product][subproduct].count
      })
     }
+    else
+    {
+      isNewProductPresent = true;
+    }
    })
   
-   console.log("The final Array is :"+DB_final)
-  }
+   if(isNewProductPresent){
+    console.log("yepppp")
+    console.log("Keys of Np : ",values["NewProducts"])
+    values["NewProducts"].forEach((newProduct) => {
+      let productIndex = DB_final.findIndex((entry) => entry.title == newProduct.ProductName);
+      if(productIndex != -1){
+        DB_final[productIndex].products.push({
+            "subtype": newProduct.ProductSubType,
+            "count": newProduct.count
+        })
+      }
+      else{
+        DB_final.push({
+          title: newProduct.ProductName,
+          products: [{
+            "subtype": newProduct.ProductSubType,
+            "count": newProduct.count
+          }]
+        })
+      }
+    })
+   
+   }
 
+   console.log("The final Array is :",DB_final)
+  }
+ 
 class VendorInventory extends Component {
    
     render() {

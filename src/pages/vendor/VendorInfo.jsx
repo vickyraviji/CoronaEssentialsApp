@@ -1,6 +1,7 @@
 import React from 'react';
 import {Layout} from 'antd';
 import SiderMenuVendor from '../../components/SiderMenuVendor';
+
 import 'antd/dist/antd.css';
 import comp_image from '../../images/company.jpg'
 import { List, Avatar, Row,Col } from 'antd';
@@ -9,6 +10,7 @@ import MainList from '../../components/customer_inventory/ListsVendor'
 import ProductInventory from '../../components/SellerCart/Cart'
 import { Card } from 'antd';
 import Grid from 'antd/lib/card/Grid';
+import SiderMenuAdmin from '../../components/SiderMenuAdmin';
 const { Meta } = Card;
 
 const {Content} = Layout;
@@ -18,6 +20,7 @@ var Contact_number = "567890"
 var Place = "chennai"
 var Image = comp_image;
 
+const toggle_variable = 1; // from DB
 const Input = [
     {
        
@@ -69,12 +72,24 @@ const Input = [
 
 
 ]
+function Toggle ()
+{
+    if(toggle_variable == 1)
+    {
+        return <SiderMenuVendor/>
+    }
+    else if(toggle_variable ==0)
+    {
+        return <SiderMenuAdmin/>
+    }
+}
 class VendorInfo extends React.Component {
     
     render() {
         return (
             <Layout style={{ minHeight: '100vh' }}>
-                <SiderMenuVendor />
+                
+                <Toggle/>
                 <Content>
                 <Row style = {{paddingTop : 20,paddingLeft : 10}}>
                 <Col span={4}>
@@ -100,8 +115,8 @@ class VendorInfo extends React.Component {
                  </div>
                  
                  </Col>
-                 <Col span={8}></Col> 
-                 <Col span = {8} style = {{paddingRight:10}}>
+                 <Col span={6}></Col> 
+                 <Col span = {10} style = {{paddingRight:10}}>
                  
                  <div className = "container-fluid.row" >
          <Card

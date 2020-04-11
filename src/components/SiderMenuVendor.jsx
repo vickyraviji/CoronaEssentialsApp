@@ -29,7 +29,7 @@ class SiderMenu extends React.Component {
         <div className="logo" />
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
           <Menu.Item key="1">
-            <Link to='/VendorInventory'><AppstoreOutlined /><span>Inventory</span></Link>
+            <Link to='/SellerCart'><AppstoreOutlined /><span>My Inventory</span></Link>
           </Menu.Item>
           <SubMenu
             key="sub1"
@@ -40,7 +40,7 @@ class SiderMenu extends React.Component {
               </span>
             }
           >
-            <Menu.Item key="2"><Link to='/VendorInfo'></Link><InfoCircleOutlined /><span>Account Info</span></Menu.Item>
+            <Menu.Item key="2"><Link to='/VendorInfo'></Link><InfoCircleOutlined /><span>My Organisation</span></Menu.Item>
             <Menu.Item key="3"><Link to='/'><LogoutOutlined /><span>Logout</span></Link></Menu.Item>
           </SubMenu>
         </Menu>

@@ -16,7 +16,7 @@ import {
 import {Card} from 'antd';
 import '../css/Register.css';
 import { Layout} from 'antd';
-import { white } from 'material-ui/styles/colors';
+import { white } from 'material-ui/colors';
 import {Affix} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {Link, useHistory} from 'react-router-dom';
@@ -30,7 +30,7 @@ const AutoCompleteOption = AutoComplete.Option;
 const formItemLayout = {
   labelCol: {
     xs: {
-      span: 24,
+      span: 28,
     },
     sm: {
       span: 8,
@@ -38,7 +38,7 @@ const formItemLayout = {
   },
   wrapperCol: {
     xs: {
-      span: 24,
+      span: 28,
     },
     sm: {
       span: 16,
@@ -48,7 +48,7 @@ const formItemLayout = {
 const tailFormItemLayout = {
   wrapperCol: {
     xs: {
-      span: 24,
+      span: 28,
       offset: 0,
     },
     sm: {
@@ -189,7 +189,23 @@ const RegistrationForm = () => {
           }),
         ]}
       >
-        <Input.Password />
+        <Input.Password  />
+      </Form.Item>
+      <Form.Item
+        name="Adress"
+        label="Address"
+        rules={[
+          {
+            required: true,
+            message: 'Please enter your Address',
+          },
+        ]}
+      >
+        <Input
+          style={{
+            width: '100%',
+          }}
+        />
       </Form.Item>
 
       <Form.Item label="Country Code" rules={[
@@ -358,7 +374,7 @@ class Register extends React.Component {
                     
                     <div className="site-card-border-less-wrapper" className="bg">
                         <Row  className="row-form">
-                            <Card title="Registration" bordered={true} style={{ width: 450, height:770,}}>
+                            <Card title="Registration" bordered={true} style={{ width: 500, height:850,}}>
                                 <RegistrationForm />
                             </Card>
                         </Row>

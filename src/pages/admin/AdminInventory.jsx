@@ -11,6 +11,7 @@ const {Content} = Layout;
 const vendorData = [
     {
         title: "Amazon",
+        city : "Chennai",
         lat: 41,
         lon: -70,
         products: {
@@ -21,6 +22,7 @@ const vendorData = [
     },
     {
         title: "Uber",
+        city : "pondicherry",
         lat: 50,
         lon: 90,
         products: {
@@ -29,6 +31,7 @@ const vendorData = [
     },
     {
         title: "Flipper",
+        city : "cuddalore",
         lat: 40,
         lon: 80,
         products: {
@@ -38,6 +41,7 @@ const vendorData = [
     },
     {
         title: "Zomato",
+        city : "new york",
         lat: 20,
         lon: 50,
         products: {
@@ -102,6 +106,7 @@ const vendorData = [
                                 lat={vendor.lat} 
                                 lon={vendor.lon}  
                                 Name = {vendor.title} 
+                                city ={vendor.city}
                                 
                                 
                                 />

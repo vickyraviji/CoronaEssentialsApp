@@ -1,46 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import Popup from "reactjs-popup";
 import {Button,Row,Col} from 'antd';
-class DocumentPopup extends React.Component {
-    constructor(props) {
-      super(props);
-     
-     
-      let bool = false;   //from DB
-     
-      this.state = { open: false,toggle:bool };
-      this.openModal = this.openModal.bind(this);
-      this.closeModal = this.closeModal.bind(this);
+import { Link, useHistory } from "react-router-dom";
+
+const DocumentPopup = (props) => {
+  
+     let toggle_variable = false;  //DB variable
+      const [isModalVisible,updateModalVisibility] = useState(false);
+    
+      const history = useHistory();
+
+      const OpenDocs = ()=>{  
+        history.push("/UploadDocs")
+      }
+      const whichPage=()=>{
+        history.push("/VendorInventory")
+      }
+
+    const openModal = () => {
+      updateModalVisibility(true);
     }
-   
-    openModal() {
-      this.setState({ open: true });
+    const closeModal = () => {
+      updateModalVisibility(false);
     }
-    closeModal() {
-      this.setState({ open: false });
-    }
-   
-    render() {
-      const toggle = this.state.toggle
-      console.log("Toggle :"+toggle)
-      let popup_toggle;
-      if(toggle)
-      {
-          popup_toggle =  <div> <Button type="primary" htmlType="submit" onClick={this.openModal} >
+    let popup_toggle;
+    if(toggle_variable){
+      
+      popup_toggle =  <div> <Row><Col span = {4}><Button type="primary" htmlType="submit" onClick={openModal} >
           Edit
-        </Button>
+        </Button></Col><Col span ={3}></Col><Col span={6} style={{paddingLeft:10}}>
+        <Button type="primary" htmlType="submit" onClick={OpenDocs} >
+        Upload Documents
+       </Button></Col></Row>
           <Popup
-            open={this.state.open}
+            open={isModalVisible}
             closeOnDocumentClick
-            onClose={this.closeModal}
+            onClose={closeModal}
           >
             <div className="modal">
               <Row>
-              Please Upload the Necessary documents to this Mail Id (Link below)
+              Please Upload the Necessary documents 
               </Row>
-              <Row>
-              @adam.gmail.com
-              </Row>
+            
              <Row>
               <Col span={2}></Col>
               <Col> Neccessary Docs :  For Eg </Col>
@@ -69,7 +70,7 @@ class DocumentPopup extends React.Component {
                 <Col span={8}></Col>
                 <Col span={12}></Col>
                 <Col span={4}>
-                <Button type="primary" htmlType="submit" onClick={this.closeModal} >
+                <Button type="primary" htmlType="submit" onClick={closeModal} >
          Okay
         </Button>
                 </Col>
@@ -78,18 +79,22 @@ class DocumentPopup extends React.Component {
             </div>
           </Popup>
           </div>
-      }
-      else{
-        popup_toggle =  <Button type="primary" htmlType="submit" onClick={console.log("hey")} >
-        Edit
-       </Button>
-        
-      }
-      return (
-        <div>
-        {popup_toggle}
-        </div>
-      );
     }
+    else{
+      
+      popup_toggle = <div> <Row> <Col span={8}></Col><Col span={4}></Col><Col span = {4}><Button type="primary" htmlType="submit" onClick={whichPage} >
+      Edit
+    </Button></Col><Col span={6}>
+    <Button type="primary" htmlType="submit" onClick={OpenDocs} >
+    Add Documents
+   </Button></Col></Row></div> 
+      
+    }
+    return (
+      <div>
+      {popup_toggle}
+      </div>
+    );
+      
   }
 export default DocumentPopup  
