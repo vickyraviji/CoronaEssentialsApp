@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
+import * as firebase from 'firebase';
+
 import {
   Form,
   Input,
@@ -20,7 +22,6 @@ import { white } from 'material-ui/styles/colors';
 import {Affix} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {Link, useHistory} from 'react-router-dom';
-
 
 const { Header} = Layout;
 
@@ -58,13 +59,41 @@ const tailFormItemLayout = {
   },
 };
 
+const db = firebase.firestore();
+  
+   
+
 const RegistrationForm = () => {
   const history = useHistory();
   const [form] = Form.useForm();
 
   const onFinish = values => {
+    firebase
+    .auth()
+    .createUserWithEmailAndPassword(values.email, values.password)
+    .then(res => {
+      if (res.user){
+        const userRef = db.collection("User").doc(res.user.uid).set({
+          firstname: values.firstname,
+          email: values.email,
+          phone:values.phone,
+          website:values.website,
+          type:values.type
+
+        }).then(function() {
+          console.log("Document successfully written!");
+          history.replace("/");
+      })
+      .catch(function(error) {
+          console.error("Error writing document: ", error);
+      });
+       
+    }})
+    .catch(e => {
+      console.log(e.message);
+    });
     console.log('Received values of form: ', values);
-    history.replace("/");
+    
   };
 
   const prefixSelector = (
@@ -94,6 +123,22 @@ const RegistrationForm = () => {
       onFinish={onFinish}
       scrollToFirstError
     >
+        <Form.Item
+        name="type"
+        label="type"
+        hasFeedback
+        rules={[
+          {
+            required: true,
+            message: 'Please select type!',
+          },
+        ]}
+      >
+        <Select placeholder="Type" style={{width: 100}}>
+          <Option value="Seller">Seller</Option>
+          <Option value="Buyer">Buyer</Option>
+        </Select>
+      </Form.Item>
       <Form.Item
         name="firstname"
         label="Title"

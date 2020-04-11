@@ -6,15 +6,49 @@ import {Row, Col} from 'antd';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
 import { Link, useHistory } from "react-router-dom";
+import * as firebase from 'firebase';
+var firebaseConfig = {
+  apiKey: "AIzaSyBfy5nYbmlMsQpK_dbwsH1s83cxTdA5EGY",
+  authDomain: "corona-6c229.firebaseapp.com",
+  databaseURL: "https://corona-6c229.firebaseio.com",
+  projectId: "corona-6c229",
+  storageBucket: "corona-6c229.appspot.com",
+  messagingSenderId: "919465148200",
+  appId: "1:919465148200:web:5766c4bb4c232162569a1d",
+  measurementId: "G-MYVYKS4VLT"
+};
 
-
+firebase.initializeApp(firebaseConfig);
+console.log(firebase);
+const db = firebase.firestore();
 const LoginForm = () => {
 
     const history = useHistory();
 
     const onFinish = values => {
       console.log('Received values of form: ', values);
-      history.replace("/AdminInventory");
+      firebase
+  .auth()
+  .signInWithEmailAndPassword(values.email, values.password)
+  .then(res => {
+    if (res.user){
+      var docRef = db.collection("User").doc(res.user.uid);
+      docRef.get().then(function(doc) {
+        if (doc.data().type=="Buyer") {
+          history.replace("/AdminInventory");
+        } else if(doc.data().type=="Seller") {
+          history.replace("/VendorInventory");
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+      
+    }
+  })
+  .catch(e => {
+    console.log(e.message);
+  });
+      
     };  
   
     return (
