@@ -7,6 +7,7 @@ import VendorInventory from './pages/vendor/VendorInventory';
 import SellerCart from './pages/vendor/SellerCart'
 import VendorInfo from './pages/vendor/VendorInfo';
 import UploadDocuments from './pages/vendor/UploadDocuments'
+import VendorProfile from './pages/vendor/VendorProfile'
 import {
   BrowserRouter as Router,
   Switch,
@@ -36,6 +37,9 @@ function App() {
       <Route path='/Register' exact={true}>
         <Register />
       </Route>
+      <Route path='/VendorProfile' exact={true}>
+      <VendorProfile />
+    </Route>
       <Route path='/' exact={true}>
         <Login />
       </Route>

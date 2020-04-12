@@ -10,6 +10,8 @@ const MainList = props =>{
     emailid,
     number,
     place,
+    website,
+    address,
   }=props
 
   
@@ -27,9 +29,18 @@ var data = [
     detail : number
   },
   {
+    title: 'Website',
+    detail : website
+  },
+  {
+    title: 'Address',
+    detail : address
+  },
+  {
     title: 'Location',
     detail : place
   },
+  
   
 ];
 

@@ -5,9 +5,10 @@ import  '../../css/mycss.css'
 import 'antd/dist/antd.css';
 import {Form,Button} from 'antd';
 import Products from'../../components/sellerpage/productsupdtate'
-
+import { Link, useHistory } from "react-router-dom";
 import AddNewProduct from '../../components/sellerpage/addProduct';
 const {Content} = Layout;
+
 const Input = [
     {
        
@@ -139,16 +140,20 @@ const layout = {
    console.log("The final Array is :",DB_final)
   }
  
-class VendorInventory extends Component {
+const VendorInventory = props => {
    
-    render() {
+  const history = useHistory()
+const submitCart = ()=>{
+    history.replace('/SellerCart')
+}
+    
         return (
             <Layout style={{ minHeight: '100vh' }}>
                 <SiderMenuVendor />
                 <Content>
                     <div>
                     <div>
-                    <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+                    <Form {...layout} name="nest-messages"  onSub    onFinish={onFinish,submitCart} validateMessages={validateMessages}>
                         {
                         Input.map((product )=>
                         <Products
@@ -173,7 +178,7 @@ class VendorInventory extends Component {
                 </Content>
             </Layout>
         );
-    }
+    
 }
 
 export default VendorInventory;

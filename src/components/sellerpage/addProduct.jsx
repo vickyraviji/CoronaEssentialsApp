@@ -4,6 +4,19 @@ import 'antd/dist/antd.css';
 
 import { Form, Input, Button,InputNumber, Col, Row } from "antd";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+import { AutoComplete } from 'antd';
+
+const options = [
+  {
+    value: 'Masks',
+  },
+  {
+    value: 'Suits',
+  },
+  {
+    value: 'Ventilators',
+  },
+];
 
 const AddNewProduct = ()=>{
 
@@ -31,13 +44,28 @@ return(
                         }
                       ]}
                     >
-                      <Input placeholder="ProductName" />
+                      <AutoComplete
+                        style={{
+                          width: 200,
+                        }}
+                        options={options}
+                        placeholder="ProductName"
+                        filterOption={(inputValue, option) =>
+                          option.value.toUpperCase().startsWith(inputValue.toUpperCase())
+                        }
+                      />
                     </Form.Item>
                   </Col>
                   <Col span ={6}>
                     <Form.Item
                       name={[field.name, "ProductSubType"]}
                       fieldKey={["ProductName", "ProductSubType"]}
+                      rules={[
+                        {
+                        required : true,
+                        message : "Enter the product name"
+                        }
+                      ]}
                      
                     >
                       <Input placeholder="ProductSubType" />
@@ -55,6 +83,7 @@ return(
                      max: 50000,
                     },
                 ]}
+                initialValues = {0}
                 >
         <InputNumber style ={{width:"100%"}} />
       </Form.Item>

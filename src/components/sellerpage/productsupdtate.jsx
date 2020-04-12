@@ -42,21 +42,12 @@ const validateMessages = {
 const Products = props=>{
   const{
     Parentname,
-    subname1,
-    subname2,
-    products
+    products   // an array
  }=props;
 
-    // const onFinish = (values) => {
-  
-    //     console.log("hii")
-    //     console.log(values);
-      
-    // }
     return (
       
     <div>
-    {/* // <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}> */}
     
     <Row style = {{paddingTop : 40,paddingLeft : 40}}>
     <Col span={8}>
@@ -83,6 +74,8 @@ const Products = props=>{
                 max: 50000,
               },
             ]}
+            initialValues = {0}
+            
           >
             <InputNumber style ={{width:"100%"}} />
           </Form.Item>

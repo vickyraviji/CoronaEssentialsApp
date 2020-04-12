@@ -12,8 +12,7 @@ const vendorData = [
     {
         title: "Amazon",
         city : "Chennai",
-        lat: 41,
-        lon: -70,
+       
         products: {
             "facemask": 30,
             "gloves": 50,
@@ -23,8 +22,7 @@ const vendorData = [
     {
         title: "Uber",
         city : "pondicherry",
-        lat: 50,
-        lon: 90,
+        
         products: {
             "facemask": 30,
         }
@@ -32,8 +30,7 @@ const vendorData = [
     {
         title: "Flipper",
         city : "cuddalore",
-        lat: 40,
-        lon: 80,
+        
         products: {
             "gloves": 50,
             "n95masks" : 40,
@@ -42,8 +39,7 @@ const vendorData = [
     {
         title: "Zomato",
         city : "new york",
-        lat: 20,
-        lon: 50,
+  
         products: {
             "doctorsuits": 30,
             "gowns": 50,
@@ -103,8 +99,7 @@ const vendorData = [
                         <Col span={10}>
                             <CardComp 
                                 imgsrc = {vendor.image} 
-                                lat={vendor.lat} 
-                                lon={vendor.lon}  
+                               
                                 Name = {vendor.title} 
                                 city ={vendor.city}
                                 

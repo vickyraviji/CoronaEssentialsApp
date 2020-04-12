@@ -6,9 +6,11 @@ import {
   UserOutlined,
   LogoutOutlined,
   AppstoreOutlined,
-  InfoCircleOutlined
+  InfoCircleOutlined,
+  ProfileOutlined
 } from '@ant-design/icons';
 import {Link} from 'react-router-dom';
+
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -41,7 +43,9 @@ class SiderMenu extends React.Component {
             }
           >
             <Menu.Item key="2"><Link to='/VendorInfo'></Link><InfoCircleOutlined /><span>My Organisation</span></Menu.Item>
+            <Menu.Item key="4"><Link to='/VendorProfile'><ProfileOutlined/><span>My Profile</span></Link></Menu.Item> 
             <Menu.Item key="3"><Link to='/'><LogoutOutlined /><span>Logout</span></Link></Menu.Item>
+             
           </SubMenu>
         </Menu>
       </Sider>
@@ -51,6 +55,3 @@ class SiderMenu extends React.Component {
 
 export default SiderMenu;
 
-// Use inside this layout 
-// <Layout style={{ minHeight: '100vh' }}>
-// </Layout>

@@ -1,10 +1,11 @@
 import React from 'react';
 import {Layout} from 'antd';
+import { Link, useHistory } from "react-router-dom";
 import SiderMenuVendor from '../../components/SiderMenuVendor';
-
+import ProfileImage from '../../components/VendorInfo/ProfileImage'
 import 'antd/dist/antd.css';
 import comp_image from '../../images/company.jpg'
-import { List, Avatar, Row,Col } from 'antd';
+import { List, Avatar, Row,Col,Button } from 'antd';
 import  '../../css/mycss.css'
 import MainList from '../../components/customer_inventory/ListsVendor'
 import ProductInventory from '../../components/SellerCart/Cart'
@@ -17,6 +18,8 @@ const {Content} = Layout;
 var Name_of_organisation = "Athena Technologies"
 var Emailid = "Athena@gmail.com"
 var Contact_number = "567890"
+var Website = "Athena.com"
+var Address = "No 40/1 bunder garden main st"
 var Place = "chennai"
 var Image = comp_image;
 
@@ -83,9 +86,11 @@ function Toggle ()
         return <SiderMenuAdmin/>
     }
 }
-class VendorInfo extends React.Component {
-    
-    render() {
+const VendorInfo = () =>{
+    const history = useHistory()
+    const ProfilePage = ()=>{
+       history.push('/VendorProfile')
+    }
         return (
             <Layout style={{ minHeight: '100vh' }}>
                 
@@ -99,6 +104,9 @@ class VendorInfo extends React.Component {
                 
                             <Col span={10}></Col>
                             <Col span={6}></Col>
+                            <Col span={4}><Button type="primary" htmlType="submit" onClick = {ProfilePage}>
+                              Edit Profile
+                           </Button></Col>
                             </Row>
                 
                    
@@ -111,6 +119,8 @@ class VendorInfo extends React.Component {
                  emailid = {Emailid}
                  number = {Contact_number}
                  place = {Place}
+                 address = {Address}
+                 website = {Website}
                  />
                  </div>
                  
@@ -122,7 +132,8 @@ class VendorInfo extends React.Component {
          <Card
          hoverable
          className = "vendorDisplayCard"
-         cover={<img alt="example" src={comp_image} className="card-img-top"/>}
+        // cover = {<Col span={20} style = {{paddingRight:10}}><ProfileImage/></Col>}
+        cover={<img alt="example" src={comp_image} className="card-img-top"/>}
        >
           <Meta
        
@@ -158,14 +169,17 @@ class VendorInfo extends React.Component {
         )
         }
                  </div>
+                 
                 
          </Col>
      </Row>
- 
+                    <Row style = {{height:50}}>
+
+                    </Row>
                 </Content>
             </Layout>
         );
     }
-}
+
 
 export default VendorInfo;

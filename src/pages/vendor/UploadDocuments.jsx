@@ -50,9 +50,13 @@ class UploadDocuments extends React.Component {
             <Layout style={{ minHeight: '100vh' }}>
                 <SiderMenuAdmin />
                 <Content>
-                
-                   <Upload_docs/>
+                  <Row style = {{height : 200}}>
+
                  
+                <Col span = {24}>
+                   <Upload_docs/>
+                   </Col>
+                   </Row>
                 </Content>
             </Layout>
         );

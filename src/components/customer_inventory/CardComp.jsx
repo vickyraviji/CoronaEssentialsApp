@@ -14,8 +14,7 @@ const CardComp = props =>{
 
   const history = useHistory()
     const {
-        lat,
-        lon,
+       
         Name,
         city,
     } = props;
@@ -23,7 +22,7 @@ const CardComp = props =>{
    
 
     console.log("Props are :",props)
-    const [distance,updateDistance] = useState(undefined);
+    // const [distance,updateDistance] = useState(undefined);
     
     const whichPage = Name=>{
       console.log("clicked ",Name);
@@ -32,34 +31,34 @@ const CardComp = props =>{
     }
  
 
-    useEffect(() => {
+    // useEffect(() => {
 
-      let lon1,lat1;
-      let Promises = new Promise((succeed,fail)=>{
-        window.navigator.geolocation.getCurrentPosition(function(pos) {
-          console.log(pos); 
-           console.log("After the position "+pos)
-            lon1 = pos.coords.longitude
-           lat1 = pos.coords.latitude
-           succeed()
-            })
-      })
+    //   let lon1,lat1;
+    //   let Promises = new Promise((succeed,fail)=>{
+    //     window.navigator.geolocation.getCurrentPosition(function(pos) {
+    //       console.log(pos); 
+    //        console.log("After the position "+pos)
+    //         lon1 = pos.coords.longitude
+    //        lat1 = pos.coords.latitude
+    //        succeed()
+    //         })
+    //   })
       
-       console.log(lon1+"   "+lat1)
-        // let lon1 = 80.23//pos.coords.longitude
-        // let lat1 = 13.11
-        Promises.then(()=>{
-          if(distance === undefined){
-            console.log("Lat ",lat)
-            console.log("Long ",lon)
-            console.log("Lat1",lat1)
-            console.log("Long1 ",lon1)
+    //    console.log(lon1+"   "+lat1)
+    //     // let lon1 = 80.23//pos.coords.longitude
+    //     // let lat1 = 13.11
+    //     Promises.then(()=>{
+    //       if(distance === undefined){
+    //         console.log("Lat ",lat)
+    //         console.log("Long ",lon)
+    //         console.log("Lat1",lat1)
+    //         console.log("Long1 ",lon1)
             
-            updateDistance(calculateDistance(lat,lon,lat1,lon1))
-        }
-        })
+    //         updateDistance(calculateDistance(lat,lon,lat1,lon1))
+    //     }
+    //     })
       
-    },[lon,lat])
+    // },[lon,lat])
 
     return(
       
